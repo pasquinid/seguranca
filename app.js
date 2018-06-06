@@ -24,18 +24,18 @@ function getANumber(){
 	if(Math.random() * probs[1] *100 > probs[1]){
 		return getSecondNumber();
 	}
-    if(Math.random() * probs[2] *100 > probs[2]){
-        return getThirdNumber();
-    }
-    if(Math.random() * probs[3] *100 > probs[3]){
-        return getFourthNumber();
-    }
-    if(Math.random() * probs[4] *100 > probs[4]){
-        return getFifthNumber();
-    }
-    if(Math.random() * probs[5] *100 > probs[5]){
-            return getSixthNumber();
-    }
+	if(Math.random() * probs[2] *100 > probs[2]){
+        	return getThirdNumber();
+    	}
+	if(Math.random() * probs[3] *100 > probs[3]){
+        	return getFourthNumber();
+	}
+    	if(Math.random() * probs[4] *100 > probs[4]){
+        	return getFifthNumber();
+    	}
+    	if(Math.random() * probs[5] *100 > probs[5]){
+            	return getSixthNumber();
+    	}
 	return getRandom();
 }
 
@@ -111,7 +111,7 @@ app.get('/start',function(req,res){
             }while(flag_next == 0);
             console.log("bololohaha "+ flag_next);
     }
-}
+});
 
 app.listen(port, function(){
 	console.log('Instance now listening on port ' + port );
