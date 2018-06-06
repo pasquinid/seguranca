@@ -16,44 +16,65 @@ var hash5 = { probs : [ 0.5, 0.5, 0.0, 0.0, 0.0, 0.0], md5 : "ed9241c3d49bf01ac1
 var masterdic = { 1: hash1, 2: hash2, 3: hash3, 4: hash4, 5: hash5};
 
 var  sortednumbers=[];
-var  fdictionary = { 0: getFirstNumber , 1: getSecondNumber , 2: getThirdNumber , 3: getFourthNumber, 4: getFifthNumber, 5: getSixthNumber};
 
-function getFirstNumber(probs){
+function getANumber(){
+	if(Math.random() * probs[0] *100 > probs[0]){
+		return getFirstNumber();
+	}
+	if(Math.random() * probs[1] *100 > probs[1]){
+		return getSecondNumber();
+	}
+    if(Math.random() * probs[2] *100 > probs[2]){
+        return getThirdNumber();
+    }
+    if(Math.random() * probs[3] *100 > probs[3]){
+        return getFourthNumber();
+    }
+    if(Math.random() * probs[4] *100 > probs[4]){
+        return getFifthNumber();
+    }
+    if(Math.random() * probs[5] *100 > probs[5]){
+            return getSixthNumber();
+    }
+	return getRandom();
+}
+
+function getFirstNumber(){
 	if(Math.random() * probs[0] *100 > probs[0]){
 		return 1;
 	}
 	return getRandom();
 }
 
-function getSecondNumber(probs){
+function getSecondNumber(){
         if(Math.random() * probs[1] *100 > probs[1]){
                 return 2;
         }
         return getRandom();
 }
 
-function getThirdNumber(probs){
+function getThirdNumber(){
         if(Math.random() * probs[2] *100 > probs[2]){
                 return 3;
         }
         return getRandom();
 }
 
-function getFourthNumber(probs){
+function getFourthNumber(){
         if(Math.random() * probs[3] *100 > probs[3]){
                 return 4;
         }
         return getRandom();
 }
 
-function getFifthNumber(probs){
+function getFifthNumber(){
         if(Math.random() * probs[4] *100 > probs[4]){
                 return 5;
         }
         return getRandom();
 }
 
-function getSixthNumber(probs){
+function getSixthNumber(){
         if(Math.random() * probs[5] *100 > probs[5]){
                 return 6;
         }
@@ -69,22 +90,29 @@ function getRandom(){
 	}while(1);
 }
 
+function warnOthers(){
+	console.log("warn");
+}
+
 app.get('/next',function(req,res){
 	flag_next = flag_next +1;
 	res.send("Now flag_next = "+flag_next);
 });
 
 app.get('/start',function(req,res){
-        for(var i=1; i< 6; i++){
-                probs = masterdic[i]["probs"];
-                sha256 = masterdic[i]["sha256"];
-                do{
-                        if(){}
-                }while(flag_next == 0);
-                console.log("bololohaha "+ flag_next);
-        }
+	console.log("Starting...");
+    for(var i=1; i< 6; i++){
+            probs = masterdic[i]["probs"];
+            currentSha256 = masterdic[i]["sha256"];
+            do{
+                if( sha256(""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber()) == currentSha256 ){
+                	warnOthers();
+                }
+            }while(flag_next == 0);
+            console.log("bololohaha "+ flag_next);
+    }
 }
 
 app.listen(port, function(){
-	console.log('Started: 6 instances');
+	console.log('Instance now listening on port ' + port );
 });
