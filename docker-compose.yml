@@ -16,6 +16,7 @@ services:
         ports:
             - 3000:3000
             - 3001:3001
+            - 3333:3333
         volumes:
             - ~/seguranca:/app
 networks:
