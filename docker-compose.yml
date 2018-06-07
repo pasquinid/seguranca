@@ -1,0 +1,22 @@
+version: '3.2'
+
+services:
+    #############
+    #  SYNAPSE  #
+    #############
+    breakernode:
+        image: hashbreaker
+        networks:
+            - hashbreaker
+        deploy:
+            resources:
+                limits:
+                    cpus: '2'
+            mode: global
+        ports:
+            - 3000:3000
+            - 3001:3001
+        volumes:
+            - ~/seguranca:/app
+networks:
+    hashbreaker:
