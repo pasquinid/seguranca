@@ -94,12 +94,12 @@ function getRandom(){
 
 function breakHash(probs,currentSha256){
         do{
-		word_1 = ""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber();
-                word_2 = ""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber();
-                word_3 = ""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber();
-                word_4 = ""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber();
-                word_5 = ""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber();
-                word_6 = ""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber();
+		word_1 = dictionary[""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber()];
+                word_2 = dictionary[""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber()];
+                word_3 = dictionary[""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber()];
+                word_4 = dictionary[""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber()];
+                word_5 = dictionary[""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber()];
+                word_6 = dictionary[""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber()];
 
 		key = ""+word_1+word_2+word_3+word_4+word_5+word_6;
 		hash = sha256( key );
