@@ -8,4 +8,4 @@ RUN npm install
 
 RUN apt-get install -y procps
 
-CMD sleep infinity
+CMD node app_aux.js

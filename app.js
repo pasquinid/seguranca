@@ -1,6 +1,7 @@
 const sha256 	= require('sha256');
 const express 	= require('express');
 const app 	= express();
+var request     = require('request');
 const port 	= 3000;
 
 var exec = require('child_process').exec, child;
@@ -100,13 +101,28 @@ function breakHash(probs,currentSha256){
                 word_5 = ""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber();
                 word_6 = ""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber();
 
-		hash = sha256(""+word_1+word_2+word_3+word_4+word_5+word_6 );
+		key = ""+word_1+word_2+word_3+word_4+word_5+word_6;
+		hash = sha256( key );
 
                	if( hash  == currentSha256 ){
-               		console.log("DONE "+hash);
+               		console.log("DONE "+ key);
 			break;
                	}
          }while(1);
+}
+
+function warnManager(key){
+	request.put({
+		url: "http://ec2-52-14-153-206.us-east-2.compute.amazonaws.com:3001/broke",
+	        headers: { 'content-type': 'text/plain' },
+	        body: key
+        },
+        	function (error, response, body) {
+	                if(error){
+				console.log(error);
+                	}
+        	}
+        );
 }
 
 

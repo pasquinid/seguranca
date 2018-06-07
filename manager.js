@@ -22,7 +22,7 @@ function sendEm(id,msg){
 }
 
 
-app.get('/broke',function(req,res){
+app.put('/broke',function(req,res){
         keys.push(req);
         hosts.forEach(function(h){
                 sendEm(h,"next");
@@ -39,4 +39,3 @@ app.get('/start',function(req,res){
 app.listen(port, function(){
         console.log('MANAGER now listening on port ' + port );
 });
-
