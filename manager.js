@@ -6,7 +6,12 @@ var http        = require('http');
 var port        = 3333;
 
 var hosts = [
-'ec2-18-219-146-165.us-east-2.compute.amazonaws.com'
+'ec2-18-219-146-165.us-east-2.compute.amazonaws.com', // 1
+'ec2-18-218-179-80.us-east-2.compute.amazonaws.com', // 2
+'ec2-52-14-108-177.us-east-2.compute.amazonaws.com', // 3
+'ec2-18-218-152-210.us-east-2.compute.amazonaws.com', // 4
+'ec2-52-15-131-209.us-east-2.compute.amazonaws.com', // 5
+'ec2-18-191-21-9.us-east-2.compute.amazonaws.com', // 6
 ];
 var keys = [];
 
