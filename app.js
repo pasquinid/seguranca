@@ -16,6 +16,8 @@ var hash5 = { probs : [ 0.5, 0.5, 0.0, 0.0, 0.0, 0.0], md5 : "ed9241c3d49bf01ac1
 
 var masterdic = { 1: hash1, 2: hash2, 3: hash3, 4: hash4, 5: hash5};
 
+var history = [];
+
 var sortednumbers=[];
 var flag = 0;
 
@@ -100,14 +102,23 @@ function breakHash(probs,currentSha256){
                 word_4 = dictionary[""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber()];
                 word_5 = dictionary[""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber()];
                 word_6 = dictionary[""+getANumber()+getANumber()+getANumber()+getANumber()+getANumber()];
-
+		
 		key = ""+word_1+word_2+word_3+word_4+word_5+word_6;
+		
+		if(!history.includes(key)){
+			history.push(key);
+		}else{
+			continue;
+		}
+		
 		hash = sha256( key );
 
                	if( hash  == currentSha256 ){
                		console.log("DONE "+ key);
+			warnManager(key);
 			break;
-               	}
+               	}	
+		
          }while(1);
 }
 
