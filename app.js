@@ -147,6 +147,7 @@ function main(){
 	    	for(i=parseInt(stdout); i< 6; i++){
 	        	probs = masterdic[i]["probs"];
 	            	currentSha256 = masterdic[i]["sha256"];
+			history = [];
 			breakHash(probs,currentSha256);
 	    	}
 	});
